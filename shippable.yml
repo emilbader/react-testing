@@ -26,8 +26,8 @@ jobs:
         replicate: app_gitRepo
 
   - name: run_tests
-      type: runSh
-      steps:
-        - IN: app_gitRepo
-        - TASK:
-          - script: npm run test:unit
+    type: runSh
+    steps:
+      - IN: app_gitRepo
+      - TASK:
+        - script: npm run test:unit
