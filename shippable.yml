@@ -2,11 +2,23 @@ language: node_js
 node_js:
   - 8
 
-build:
-  ci:
-    - npm i
-    - npm run test:unit
+jobs:
+  - name: install dependencies
+    type: install
+    steps:
+      - TASK:
+        - script: npm i
 
-  cache: true
-  chache_dir_list:
-    - $SHIPPABLE_BUILD_DIR/node_modules
+  - name: Run unit tests
+      type: test
+      steps:
+        - TASK:
+          - script: npm run test:unit
+#build:
+#  ci:
+#    - npm i
+#    - npm run test:unit
+
+#  cache: true
+#  chache_dir_list:
+#    - $SHIPPABLE_BUILD_DIR/node_modules
