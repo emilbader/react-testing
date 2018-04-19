@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - 8
 
-#branches:
-#  only:
-#    - master
+branches:
+  only:
+    - master
 
 #build:
 #  ci:
@@ -22,3 +22,12 @@ jobs:
       - IN: app_gitRepo
       - TASK:
         - script: npm i
+      - OUT: dependencies
+        replicate: app_gitRepo
+
+  - name: run_tests
+      type: runSh
+      steps:
+        - IN: app_gitRepo
+        - TASK:
+          - script: npm run test:unit
