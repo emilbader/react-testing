@@ -2,23 +2,23 @@ language: node_js
 node_js:
   - 8
 
-branches:
-  only:
-    - master
+#branches:
+#  only:
+#    - master
 
-build:
-  ci:
-    - npm i
-    - npm run test:unit
-
-  cache: true
-  chache_dir_list:
-    - $SHIPPABLE_BUILD_DIR/node_modules
+#build:
+#  ci:
+#    - npm i
+#    - npm run test:unit
+#
+#  cache: true
+#  chache_dir_list:
+#    - $SHIPPABLE_BUILD_DIR/node_modules
 
 jobs:
-  - name: build
-    type: runCI
+  - name: install_dependencies
+    type: runSh
     steps:
+      - IN: app_gitRepo
       - TASK:
-        script:
-          - npm i
+        - script: npm i
