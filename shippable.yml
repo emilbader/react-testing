@@ -5,7 +5,7 @@ node_js:
 build:
   ci:
     - npm i
-    - npm test:unit
+    - npm run test:unit
 
   cache: true
   chache_dir_list:
