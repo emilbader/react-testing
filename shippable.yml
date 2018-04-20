@@ -26,8 +26,6 @@ jobs:
           script:
             - echo "Installing dependencies..."
             - npm i
-      - OUT: dependencies
-        replicate: app_gitRepo
     on_success:
       script:
         - echo "Task successfully completed"
