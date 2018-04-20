@@ -9,7 +9,7 @@ branches:
 resources:
   - name: app_gitRepo
     type: gitRepo
-    integration: github
+    integration: react-testing-integration
     pointer:
       sourceName: emilbader/react-testing
       branch: master
