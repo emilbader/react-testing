@@ -6,24 +6,21 @@ branches:
   only:
     - master
 
-#build:
-#  ci:
-#    - npm i
-#    - npm run test:unit
-#
-#  cache: true
-#  chache_dir_list:
-#    - $SHIPPABLE_BUILD_DIR/node_modules
-
 jobs:
   - name: install_dependencies
     type: runSh
     steps:
       - IN: app_gitRepo
       - TASK:
-        - script: npm i
+          name: install_dependencies
+          script:
+            - echo "Installing dependencies..."
+            - npm i
       - OUT: dependencies
         replicate: app_gitRepo
+    on_success:
+      script:
+        - echo "Task successfully completed"
 
   - name: run_tests
     type: runSh
@@ -31,4 +28,10 @@ jobs:
       - IN: install_dependencies
       - IN: app_gitRepo
       - TASK:
-        - script: npm run test:unit
+          name: run_unit_tests
+          script:
+            - echo "Running unit tests..."
+            - npm run test:unit
+    on_success:
+      script:
+        - echo "Task successfully completed"
