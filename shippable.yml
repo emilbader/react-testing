@@ -1,0 +1,37 @@
+language: node_js
+node_js:
+  - 8
+
+branches:
+  only:
+    - master
+
+jobs:
+  - name: install_dependencies
+    type: runSh
+    steps:
+      - IN: app_gitRepo
+      - TASK:
+          name: install_dependencies
+          script:
+            - echo "Installing dependencies..."
+            - npm i
+      - OUT: dependencies
+        replicate: app_gitRepo
+    on_success:
+      script:
+        - echo "Task successfully completed"
+
+  - name: run_tests
+    type: runSh
+    steps:
+      - IN: install_dependencies
+      - IN: app_gitRepo
+      - TASK:
+          name: run_unit_tests
+          script:
+            - echo "Running unit tests..."
+            - npm run test:unit
+    on_success:
+      script:
+        - echo "Task successfully completed"

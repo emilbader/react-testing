@@ -1,0 +1,9 @@
+resources:
+  - name: app_gitRepo
+    type: gitRepo
+    integration: github
+    pointer:
+      sourceName: emilbader/react-testing
+      branch: master
+      buildOnPullRequest: true
+      buildOnCommit: false
