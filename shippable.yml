@@ -14,7 +14,7 @@ resources:
       sourceName: emilbader/react-testing
       branch: master
       buildOnPullRequest: true
-      buildOnCommit: false
+      buildOnCommit: true
 
 jobs:
   - name: install_dependencies
