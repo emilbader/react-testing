@@ -6,6 +6,16 @@ branches:
   only:
     - master
 
+resources:
+  - name: app_gitRepo
+    type: gitRepo
+    integration: github
+    pointer:
+      sourceName: emilbader/react-testing
+      branch: master
+      buildOnPullRequest: true
+      buildOnCommit: false
+
 jobs:
   - name: install_dependencies
     type: runSh
